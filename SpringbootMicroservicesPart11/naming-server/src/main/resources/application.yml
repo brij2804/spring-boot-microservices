@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: naming-server
+  cloud:
+    config:
+      enabled: false
+
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
