@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: currency-conversion
+  cloud:
+    config:
+      enabled: false
+  sleuth:
+    sampler:
+      probability: 1.0
+  #zipkin:
+    #baseUrl: http://localhost:9411/
+
+server:
+  port: 8100
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
