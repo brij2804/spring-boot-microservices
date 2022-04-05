@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: currency-conversion
+  cloud:
+    config:
+      enabled: false
+server:
+  port: 8100
