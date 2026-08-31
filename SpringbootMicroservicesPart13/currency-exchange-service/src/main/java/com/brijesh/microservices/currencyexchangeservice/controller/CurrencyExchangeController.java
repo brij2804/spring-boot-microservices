@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 public class CurrencyExchangeController {
@@ -24,22 +26,22 @@ public class CurrencyExchangeController {
     private Environment environment;
 
     @GetMapping("/currency-exchange-static/from/{from}/to/{to}")
-    public CurrencyExchange retrieveExchangeValue(@PathVariable String from,@PathVariable String to){
+    public CurrencyExchange retrieveExchangeValue(@PathVariable String from, @PathVariable String to) {
         CurrencyExchange currencyExchange = new CurrencyExchange(1000L, from, to, BigDecimal.valueOf(50));
-        String port= environment.getProperty("local.server.port");
+        String port = environment.getProperty("local.server.port");
         currencyExchange.setEnvironment(port);
         return currencyExchange;
     }
 
     @GetMapping("/currency-exchange/from/{from}/to/{to}")
-    public CurrencyExchange retrieveExchangeValueFromRepository(@PathVariable String from,@PathVariable String to){
+    public CurrencyExchange retrieveExchangeValueFromRepository(@PathVariable String from, @PathVariable String to) {
 
-        logger.info("retrieveExchangeValueFromRepository called with {} to {} ",from,to);
-        CurrencyExchange currencyExchange = repository.findByFromAndTo(from,to);
-        if(currencyExchange==null){
-          throw new RuntimeException("Unable to find data for "+from+" to "+to);
+        logger.info("retrieveExchangeValueFromRepository called with {} to {} ", from, to);
+        CurrencyExchange currencyExchange = repository.findByFromAndTo(from, to);
+        if (currencyExchange == null) {
+            throw new RuntimeException("Unable to find data for " + from + " to " + to);
         }
-        String port= environment.getProperty("local.server.port");
+        String port = environment.getProperty("local.server.port");
         currencyExchange.setEnvironment(port);
         return currencyExchange;
     }

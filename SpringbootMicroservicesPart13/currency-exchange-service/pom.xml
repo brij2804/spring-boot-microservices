@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.4</version>
+		<version>3.5.16</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.brijesh.microservices</groupId>
@@ -14,8 +14,8 @@
 	<name>currency-exchange-service</name>
 	<description>Centralized configuration Server</description>
 	<properties>
-		<java.version>15</java.version>
-		<spring-cloud.version>2020.0.2</spring-cloud.version>
+		<java.version>25</java.version>
+		<spring-cloud.version>2025.0.3</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -28,7 +28,7 @@
 		</dependency>
 		<dependency>
 			<groupId>io.github.resilience4j</groupId>
-			<artifactId>resilience4j-spring-boot2</artifactId>
+			<artifactId>resilience4j-spring-boot3</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -47,12 +47,12 @@
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-sleuth</artifactId>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-tracing-bridge-brave</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
+			<groupId>io.zipkin.reporter2</groupId>
+			<artifactId>zipkin-reporter-brave</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.amqp</groupId>
@@ -92,7 +92,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+        </plugins>
 	</build>
 	<repositories>
 		<repository>
